@@ -40,7 +40,7 @@
   ],
   "license": "MPL-2.0",
   "main": "src/factom-walletd.js",
-  "name": "factom-walletdjs",
+  "name": "factom-walletd-node",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TriSigmaDev/factom-walletdjs.git"

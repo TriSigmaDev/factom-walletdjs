@@ -33,7 +33,7 @@
 
 ## setFactomNode
 
-[src/factom-walletd.js:19-23](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L19-L23 "Source code on GitHub")
+[src/factom-walletd.js:19-23](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L19-L23 "Source code on GitHub")
 
 Set the URL of the factom node.
 
@@ -43,7 +43,7 @@ Set the URL of the factom node.
 
 ## setTimeout
 
-[src/factom-walletd.js:30-32](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L30-L32 "Source code on GitHub")
+[src/factom-walletd.js:30-32](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L30-L32 "Source code on GitHub")
 
 Set the timeout of the JSON request to the factom node
 
@@ -53,7 +53,7 @@ Set the timeout of the JSON request to the factom node
 
 ## dispatch
 
-[src/factom-walletd.js:40-72](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L40-L72 "Source code on GitHub")
+[src/factom-walletd.js:40-72](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L40-L72 "Source code on GitHub")
 
 Utility commands for dispatching JSON commands to the factom server.
 
@@ -63,7 +63,7 @@ Utility commands for dispatching JSON commands to the factom server.
 
 ## addEcOutput
 
-[src/factom-walletd.js:102-112](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L102-L112 "Source code on GitHub")
+[src/factom-walletd.js:102-112](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L102-L112 "Source code on GitHub")
 
 <https://docs.factom.com/api#add-ec-output>
 
@@ -81,7 +81,7 @@ amount of factoshis to pay to get X EC.
 
 ## addFee
 
-[src/factom-walletd.js:128-138](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L128-L138 "Source code on GitHub")
+[src/factom-walletd.js:128-138](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L128-L138 "Source code on GitHub")
 
 <https://docs.factom.com/api#add-fee>
 
@@ -97,7 +97,7 @@ manually adding the additional input. This will help to prevent overpaying.
 
 ## addInput
 
-[src/factom-walletd.js:155-164](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L155-L164 "Source code on GitHub")
+[src/factom-walletd.js:155-164](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L155-L164 "Source code on GitHub")
 
 <https://docs.factom.com/api#add-input> 
 Adds an input to the transaction from the given address. The public address
@@ -114,7 +114,7 @@ The input is measured in factoshis, so to send ten factoids, you must input
 
 ## addOutput
 
-[src/factom-walletd.js:178-188](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L178-L188 "Source code on GitHub")
+[src/factom-walletd.js:178-188](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L178-L188 "Source code on GitHub")
 
 <https://docs.factom.com/api#add-output>
 Adds a factoid address output to the transaction. Keep in mind the output
@@ -128,7 +128,7 @@ is done in factoshis. 1 factoid is 1,000,000,000 factoshis.
 
 ## address
 
-[src/factom-walletd.js:200-208](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L200-L208 "Source code on GitHub")
+[src/factom-walletd.js:200-208](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L200-L208 "Source code on GitHub")
 
 <https://docs.factom.com/api#address>
 Retrieve the public and private parts of a Factoid or Entry Credit
@@ -140,19 +140,15 @@ address stored in the wallet.
 
 ## allAddresses
 
-[src/factom-walletd.js:219-225](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L219-L225 "Source code on GitHub")
+[src/factom-walletd.js:218-224](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L218-L224 "Source code on GitHub")
 
 <https://docs.factom.com/api#all-addresses>
 
 Retrieve all of the Factoid or Entry Credit addresses stored in the wallet
 
-**Parameters**
-
--   `height` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** height of block requested
-
 ## composeChain
 
-[src/factom-walletd.js:248-257](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L248-L257 "Source code on GitHub")
+[src/factom-walletd.js:247-256](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L247-L256 "Source code on GitHub")
 
 <https://docs.factom.com/api#compose-chain>
 
@@ -174,7 +170,7 @@ This includes the content section.
 
 ## composeEntry
 
-[src/factom-walletd.js:277-286](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L277-L286 "Source code on GitHub")
+[src/factom-walletd.js:276-285](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L276-L285 "Source code on GitHub")
 
 <https://docs.factom.com/api#compose-entry>
 
@@ -195,7 +191,7 @@ the content section.
 
 ## composeTransaction
 
-[src/factom-walletd.js:300-308](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L300-L308 "Source code on GitHub")
+[src/factom-walletd.js:299-307](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L299-L307 "Source code on GitHub")
 
 <https://docs.factom.com/api#compose-transaction>
 
@@ -209,7 +205,7 @@ sent to the network.
 
 ## deleteTransaction
 
-[src/factom-walletd.js:321-329](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L321-L329 "Source code on GitHub")
+[src/factom-walletd.js:320-328](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L320-L328 "Source code on GitHub")
 
 <https://docs.factom.com/api#delete-transaction>
 
@@ -222,7 +218,7 @@ be returned, and then deleted.
 
 ## generateEcAddress
 
-[src/factom-walletd.js:340-346](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L340-L346 "Source code on GitHub")
+[src/factom-walletd.js:339-345](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L339-L345 "Source code on GitHub")
 
 <https://docs.factom.com/api#generate-ec-address>
 
@@ -230,7 +226,7 @@ Create a new Entry Credit Address and store it in the wallet.
 
 ## generateFactoidAddress
 
-[src/factom-walletd.js:357-363](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L357-L363 "Source code on GitHub")
+[src/factom-walletd.js:356-362](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L356-L362 "Source code on GitHub")
 
 <https://docs.factom.com/api#generate-factoid-address>
 
@@ -238,7 +234,7 @@ Create a new Factoid Address and store it in the wallet
 
 ## getHeight
 
-[src/factom-walletd.js:375-381](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L375-L381 "Source code on GitHub")
+[src/factom-walletd.js:374-380](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L374-L380 "Source code on GitHub")
 
 <https://docs.factom.com/api#get-height>
 
@@ -247,7 +243,7 @@ while syncing
 
 ## importAddresses
 
-[src/factom-walletd.js:393-401](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L393-L401 "Source code on GitHub")
+[src/factom-walletd.js:392-400](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L392-L400 "Source code on GitHub")
 
 <https://docs.factom.com/api#import-addresses>
 
@@ -259,7 +255,7 @@ Import Factoid and/or Entry Credit address secret keys into the wallet.
 
 ## importKoinify
 
-[src/factom-walletd.js:415-423](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L415-L423 "Source code on GitHub")
+[src/factom-walletd.js:414-422](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L414-L422 "Source code on GitHub")
 
 <https://docs.factom.com/api#import-koinify>
 
@@ -273,7 +269,7 @@ passphrase will be different.
 
 ## newTransaction
 
-[src/factom-walletd.js:440-448](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L440-L448 "Source code on GitHub")
+[src/factom-walletd.js:439-447](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L439-L447 "Source code on GitHub")
 
 <https://docs.factom.com/api#new-transaction>
 
@@ -290,7 +286,7 @@ than 0 to a transaction (0.5).
 
 ## properties
 
-[src/factom-walletd.js:460-466](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L460-L466 "Source code on GitHub")
+[src/factom-walletd.js:459-465](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L459-L465 "Source code on GitHub")
 
 <https://docs.factom.com/api#properties61>
 
@@ -299,7 +295,7 @@ the wallet and wallet API versions.
 
 ## signTransaction
 
-[src/factom-walletd.js:478-486](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L478-L486 "Source code on GitHub")
+[src/factom-walletd.js:477-485](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L477-L485 "Source code on GitHub")
 
 <https://docs.factom.com/api#sign-transaction>
 
@@ -311,7 +307,7 @@ Signs the transaction. It is now ready to be executed.
 
 ## subFee
 
-[src/factom-walletd.js:504-513](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L504-L513 "Source code on GitHub")
+[src/factom-walletd.js:503-512](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L503-L512 "Source code on GitHub")
 
 <https://docs.factom.com/api#sub-fee>
 
@@ -329,20 +325,16 @@ and output the remaining balance, then using sub fee on the output address.
 
 ## tmpTransactions
 
-[src/factom-walletd.js:526-532](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L526-L532 "Source code on GitHub")
+[src/factom-walletd.js:524-530](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L524-L530 "Source code on GitHub")
 
 <https://docs.factom.com/api#tmp-transactions>
 
 Lists all the current working transactions in the wallet. 
 These are transactions that are not yet sent.
 
-**Parameters**
-
--   `address` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** entry credit address
-
 ## transactionsByRange
 
-[src/factom-walletd.js:545-553](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L545-L553 "Source code on GitHub")
+[src/factom-walletd.js:543-551](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L543-L551 "Source code on GitHub")
 
 <https://docs.factom.com/api#using-a-range>
 
@@ -355,7 +347,7 @@ This will retrieve all transactions within a given block height range
 
 ## transactionsByTxID
 
-[src/factom-walletd.js:572-578](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L572-L578 "Source code on GitHub")
+[src/factom-walletd.js:570-576](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L570-L576 "Source code on GitHub")
 
 <https://docs.factom.com/api#by-txid>
 
@@ -374,7 +366,7 @@ transaction method
 
 ## transactionsByAddress
 
-[src/factom-walletd.js:590-598](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L590-L598 "Source code on GitHub")
+[src/factom-walletd.js:588-596](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L588-L596 "Source code on GitHub")
 
 <https://docs.factom.com/api#by-address>
 
@@ -386,7 +378,7 @@ Retrieves all transactions that involve a particular address.
 
 ## transactionsAll
 
-[src/factom-walletd.js:620-626](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L620-L626 "Source code on GitHub")
+[src/factom-walletd.js:618-624](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L618-L624 "Source code on GitHub")
 
 <https://docs.factom.com/api#all-transactions>
 
@@ -405,7 +397,7 @@ manageable.
 
 ## walletBackup
 
-[src/factom-walletd.js:638-644](https://github.com/TriSigmaDev/factom-walletdjs/blob/e9987bfa777e75546631f3a22dd16f4a44900b01/src/factom-walletd.js#L638-L644 "Source code on GitHub")
+[src/factom-walletd.js:636-642](https://github.com/TriSigmaDev/factom-walletdjs/blob/f8156211992df81a21425fb510eedf2b1b616a65/src/factom-walletd.js#L636-L642 "Source code on GitHub")
 
 <https://docs.factom.com/api#wallet-backup>
 

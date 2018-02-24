@@ -1,31 +1,4 @@
 {
-  "_from": "factomdjs@^0.2.4",
-  "_id": "factomdjs@0.2.5",
-  "_inBundle": false,
-  "_integrity": "sha512-RSE776a4oE5Q4xRtLeeOzeRJeaWUl/54/9PhkewiiZSF/EN6utaIXokrvTISmLdNhUogmCAZiaSRGWKHCFjtMA==",
-  "_location": "/factomdjs",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "factomdjs@^0.2.5",
-    "name": "factom-walletdjs",
-    "escapedName": "factom-walletdjs",
-    "rawSpec": "^0.2.5",
-    "saveSpec": null,
-    "fetchSpec": "^0.2.5"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/factomdjs/-/factom-walletdjs-0.2.5.tgz",
-  "_shasum": "13c77efd312a036951a53b388f763324fc648a95",
-  "_spec": "factom-walletdjs@^0.2.5",
-  "_where": "/proj/MFW/factomd",
-  "author": {
-    "name": "bunfield",
-    "email": "dbunfield@cybitron.com"
-  },
   "bugs": {
     "url": "https://github.com/TriSigmaDev/factom-walletdjs/issues"
   },
@@ -83,7 +56,7 @@
     "build:dist": "babel src/factom-walletd.js -o dist/factom-walletd.js",
     "lint": "eslint .",
     "prepublish": "npm run lint && npm run test && npm run build:docs && npm run build:dist",
-    "test": "mocha --recursive --check-leaks --full-trace --reporter \"test/**/*.test.js\""
+    "test": "mocha --recursive --check-leaks --full-trace \"test/**/*.test.js\""
   },
   "version": "0.2.5"
 }

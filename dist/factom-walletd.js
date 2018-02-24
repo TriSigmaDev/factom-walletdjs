@@ -217,10 +217,9 @@ function address(address) {
  * Retrieve all of the Factoid or Entry Credit addresses stored in the wallet
  * @method allAddresses
  *
- * @param {Number} height height of block requested
  *
  */
-function allAddresses(height) {
+function allAddresses() {
   var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'all-addresses'
@@ -524,10 +523,9 @@ function subFee(txname, fctaddress) {
  *
  * @method tmpTransactions
  *
- * @param {String} address entry credit address
  *
  */
-function tmpTransactions(address) {
+function tmpTransactions() {
   var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'tmp-transactions'
@@ -639,7 +637,7 @@ function transactionsAll() {
  *
  *
  */
-function walletBackup(message) {
+function walletBackup() {
   var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'wallet-backup'

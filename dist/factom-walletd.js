@@ -1,25 +1,26 @@
-let URL = 'http://127.0.0.1:8089/v2'
-let lib = URL.startsWith('https') ? require('https') : require('http')
-let options = optinit()
-let timeout = 2000
+'use strict';
 
-function optinit () {
-  const opt = require('url').parse(URL)
-  opt.headers = { 'content-type': 'text/plain', 'content-length': 0 }
-  opt.method = 'POST'
-  return opt
+var URL = 'http://127.0.0.1:8089/v2';
+var lib = URL.startsWith('https') ? require('https') : require('http');
+var options = optinit();
+var timeout = 2000;
+
+function optinit() {
+  var opt = require('url').parse(URL);
+  opt.headers = { 'content-type': 'text/plain', 'content-length': 0 };
+  opt.method = 'POST';
+  return opt;
 }
-
 
 /**
   * Set the URL of the factom node.
   * @method setFactomNode
   * @param {url} url of the factom node
  */
-function setFactomNode (url) {
-  URL = url
-  lib = URL.startsWith('https') ? require('https') : require('http')
-  options = optinit()
+function setFactomNode(url) {
+  URL = url;
+  lib = URL.startsWith('https') ? require('https') : require('http');
+  options = optinit();
 }
 
 /**
@@ -27,8 +28,8 @@ function setFactomNode (url) {
   * @method setTimeout
   * @param {Number} to Set the timeout in milliseconds
  */
-function setTimeout (to) {
-  timeout = to
+function setTimeout(to) {
+  timeout = to;
 }
 
 /**
@@ -37,51 +38,54 @@ function setTimeout (to) {
  * @param {Array} jdata
  *
  */
-function dispatch (jdata) {
-  return new Promise((resolve, reject) => {
-    const body = JSON.stringify(jdata)
-    options.headers['content-length'] = Buffer.byteLength(body)
-    const request = new lib.ClientRequest(options)
-    request.on('socket', socket => {
-      socket.setTimeout(timeout)
-      socket.on('timeout', () => request.abort())
-    })
-    request.end(body)
-    request.on('response', response => {
-      response.setEncoding('utf8')
+function dispatch(jdata) {
+  return new Promise(function (resolve, reject) {
+    var body = JSON.stringify(jdata);
+    options.headers['content-length'] = Buffer.byteLength(body);
+    var request = new lib.ClientRequest(options);
+    request.on('socket', function (socket) {
+      socket.setTimeout(timeout);
+      socket.on('timeout', function () {
+        return request.abort();
+      });
+    });
+    request.end(body);
+    request.on('response', function (response) {
+      response.setEncoding('utf8');
 
       // temporary data holder
-      const body = []
+      var body = [];
       // on every content chunk, push it to the data array
-      response.on('data', data => body.push(data))
+      response.on('data', function (data) {
+        return body.push(data);
+      });
       // all done, resolve promise with those joined chunks
-      response.on('end', function() {
+      response.on('end', function () {
         // handle http errors
-        const responseBody = body.join('')
+        var responseBody = body.join('');
         if (response.statusCode < 200 || response.statusCode > 299) {
-          responseBody.includes('"jsonrpc":"2.0"') ? reject(JSON.parse(responseBody).error) : reject(responseBody)
+          responseBody.includes('"jsonrpc":"2.0"') ? reject(JSON.parse(responseBody).error) : reject(responseBody);
         } else {
-          resolve(JSON.parse(responseBody).result)
+          resolve(JSON.parse(responseBody).result);
         }
-      
-      })
-    })
+      });
+    });
     // handle connection errors of the request
-    request.on('error', err => reject(err))
-  })
+    request.on('error', function (err) {
+      return reject(err);
+    });
+  });
 }
 
-
-function newCounter () {
-  let i = 0
+function newCounter() {
+  var i = 0;
   return function () {
-    i++
-    return i
-  }
+    i++;
+    return i;
+  };
 }
 
-const ApiCounter = newCounter()
-
+var ApiCounter = newCounter();
 
 /**
  * https://docs.factom.com/api#add-ec-output
@@ -99,16 +103,16 @@ const ApiCounter = newCounter()
  * @param {Number} amount
  *
  */
-function addEcOutput (txname, ecaddress, amount) {
-  const jdata = { 'jsonrpc': '2.0',
+function addEcOutput(txname, ecaddress, amount) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-ec-output',
     'params': {
       'tx-name': txname,
       'address': ecaddress,
-      'amount' : amount
-    }}
-  return dispatch(jdata)
+      'amount': amount
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -125,16 +129,16 @@ function addEcOutput (txname, ecaddress, amount) {
  * @param {String} fctaddress Factoid address
  *
  */
-function addFee (txname, fctaddress) {
-  const jdata = { 'jsonrpc': '2.0',
+function addFee(txname, fctaddress) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-ec-output',
     'params': {
       'tx-name': txname,
       'address': fctaddress
-    }}
+    } };
 
-  return dispatch(jdata)
+  return dispatch(jdata);
 }
 
 /**
@@ -152,15 +156,15 @@ function addFee (txname, fctaddress) {
  * @param {String} fctaddress  factoid address
  *
  */
-function addInput  (txname, fctaddress) {
-  const jdata = {'jsonrpc': '2.0', 
-    'id': ApiCounter(), 
+function addInput(txname, fctaddress) {
+  var jdata = { 'jsonrpc': '2.0',
+    'id': ApiCounter(),
     'method': 'add-input',
     'params': {
       'tx-name': txname,
       'address': fctaddress
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -175,16 +179,16 @@ function addInput  (txname, fctaddress) {
  * @param {Number} amount amount to send in factoshis
  *
  */
-function addOutput  (txname, fctaddress, amount) {
-  const jdata = {'jsonrpc': '2.0',
+function addOutput(txname, fctaddress, amount) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-output',
     'params': {
       'tx-name': txname,
       'address': fctaddress,
-      'amount' : amount
-    }}
-  return dispatch(jdata)
+      'amount': amount
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -197,14 +201,14 @@ function addOutput  (txname, fctaddress, amount) {
  * @param {String} address entry credit or factoid address 
  *
  */
-function address  (address) {
-  const jdata = {'jsonrpc': '2.0',
+function address(address) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'address',
     'params': {
       'address': address
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -215,12 +219,12 @@ function address  (address) {
  *
  *
  */
-function allAddresses  () {
-  const jdata = {'jsonrpc': '2.0',
+function allAddresses() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'all-addresses'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -244,15 +248,15 @@ function allAddresses  () {
  *
  *
  */
-function composeChain  (extids, content, ecaddress) {
-  const jdata = {'jsonrpc': '2.0',
+function composeChain(extids, content, ecaddress) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-chain',
     'params': {
-      'chain': {'firstentry':{'extids':extids, 'content':content}},
+      'chain': { 'firstentry': { 'extids': extids, 'content': content } },
       'ecpub': ecaddress
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -273,15 +277,15 @@ function composeChain  (extids, content, ecaddress) {
  * @param {String} ecaddress Entry Credit public address
  *
  */
-function composeEntry  (chainid, extids, content, ecaddress) {
-  const jdata = {'jsonrpc': '2.0',
+function composeEntry(chainid, extids, content, ecaddress) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-entry',
     'params': {
-      'entry': {'chainid':chainid, 'extids':extids, 'content':content},
+      'entry': { 'chainid': chainid, 'extids': extids, 'content': content },
       'ecpub': ecaddress
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -296,14 +300,14 @@ function composeEntry  (chainid, extids, content, ecaddress) {
  * @param {String} txname  name of transaction 
  *
  */
-function composeTransaction  (txname) {
-  const jdata = {'jsonrpc': '2.0',
+function composeTransaction(txname) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-transaction',
     'params': {
       'tx-name': txname
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -317,14 +321,14 @@ function composeTransaction  (txname) {
  * @param {String} txname Name of transaction 
  *
  */
-function deleteTransaction  (txname) {
-  const jdata = {'jsonrpc': '2.0',
+function deleteTransaction(txname) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'delete-transaction',
     'params': {
-      'tx-name': txname 
-    }}
-  return dispatch(jdata)
+      'tx-name': txname
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -336,12 +340,12 @@ function deleteTransaction  (txname) {
  *
  *
  */
-function generateEcAddress () {
-  const jdata = {'jsonrpc': '2.0',
+function generateEcAddress() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'generate-ec-address'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -353,12 +357,12 @@ function generateEcAddress () {
  *
  *
  */
-function generateFactoidAddress () {
-  const jdata = {'jsonrpc': '2.0',
+function generateFactoidAddress() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'generate-factoid-address'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -371,12 +375,12 @@ function generateFactoidAddress () {
  *
  *
  */
-function getHeight () {
-  const jdata = {'jsonrpc': '2.0',
+function getHeight() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'get-height'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -389,14 +393,14 @@ function getHeight () {
  * @param {Array} privaddresses Array of secret private fct addresses in the format [{'secret':'FsXXXXXXX','secret':'FsYYYYYYYYY', 'secret':'Es...' }] 
  *
  */
-function importAddresses  (privaddresses) {
-  const jdata = {'jsonrpc': '2.0',
+function importAddresses(privaddresses) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'import-addresses',
     'params': {
       'addresses': privaddresses
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -411,14 +415,14 @@ function importAddresses  (privaddresses) {
  * @param {String} koinify Koinify phrase (12 words)
  *
  */
-function importKoinify  (koinify) {
-  const jdata = {'jsonrpc': '2.0',
+function importKoinify(koinify) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'import-koinify',
     'params': {
       'words': koinify
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -436,14 +440,14 @@ function importKoinify  (koinify) {
  * @param {String} txname
  *
  */
-function newTransaction  (txname) {
-  const jdata = {'jsonrpc': '2.0',
+function newTransaction(txname) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'new-transaction',
     'params': {
       'tx-name': txname
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -456,12 +460,12 @@ function newTransaction  (txname) {
  *
  *
  */
-function properties () {
-  const jdata = {'jsonrpc': '2.0',
+function properties() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'properties'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -474,14 +478,14 @@ function properties () {
  * @param {String} txname Transaction Name
  *
  */
-function signTransaction  (txname) {
-  const jdata = {'jsonrpc': '2.0',
+function signTransaction(txname) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'sign-transaction',
     'params': {
       'tx-name': txname
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -500,15 +504,15 @@ function signTransaction  (txname) {
  * @param {String} fctaddress address
  *
  */
-function subFee  (txname, fctaddress) {
-  const jdata = {'jsonrpc': '2.0',
+function subFee(txname, fctaddress) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'sub-fee',
     'params': {
       'tx-name': txname,
       'address': fctaddress
-    }}
-  return dispatch(jdata)
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -521,12 +525,12 @@ function subFee  (txname, fctaddress) {
  *
  *
  */
-function tmpTransactions  () {
-  const jdata = {'jsonrpc': '2.0',
+function tmpTransactions() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'tmp-transactions'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -540,14 +544,14 @@ function tmpTransactions  () {
  * @param {Number} end Ending block height for query
  *
  */
-function transactionsByRange  (start, end) {
-  const jdata = {'jsonrpc': '2.0',
+function transactionsByRange(start, end) {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'transactions',
     'params': {
-      'range': {'start':start, 'end':end}
-    }}
-  return dispatch(jdata)
+      'range': { 'start': start, 'end': end }
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -567,12 +571,12 @@ function transactionsByRange  (start, end) {
  * @param {String} txid transaction id
  *
  */
-function transactionsByTxID  (txid) {
-  const jdata = {'jsonrpc': '2.0', 'id': ApiCounter(), 'method': 'transactions',
-    'params':{
-      'txid':txid
-    }}
-  return dispatch(jdata)
+function transactionsByTxID(txid) {
+  var jdata = { 'jsonrpc': '2.0', 'id': ApiCounter(), 'method': 'transactions',
+    'params': {
+      'txid': txid
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -585,14 +589,14 @@ function transactionsByTxID  (txid) {
  * @param {String} address query by address
  *
  */
-function transactionsByAddress  (address) {
-  const jdata = {'jsonrpc': '2.0', 
-    'id': ApiCounter(), 
+function transactionsByAddress(address) {
+  var jdata = { 'jsonrpc': '2.0',
+    'id': ApiCounter(),
     'method': 'transactions',
     'params': {
-      'address':address
-    }}
-  return dispatch(jdata)
+      'address': address
+    } };
+  return dispatch(jdata);
 }
 
 /**
@@ -615,12 +619,12 @@ function transactionsByAddress  (address) {
  *
  *
  */
-function transactionsAll () {
-  const jdata = {'jsonrpc': '2.0',
+function transactionsAll() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'transactions'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
 
 /**
@@ -633,41 +637,40 @@ function transactionsAll () {
  *
  *
  */
-function walletBackup  () {
-  const jdata = {'jsonrpc': '2.0',
+function walletBackup() {
+  var jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'wallet-backup'
-  }
-  return dispatch(jdata)
+  };
+  return dispatch(jdata);
 }
-
 
 module.exports = {
-  setTimeout,
-  setFactomNode,
-  addEcOutput,
-  addFee,
-  addInput,
-  addOutput,
-  address,
-  allAddresses,
-  composeChain,
-  composeEntry,
-  composeTransaction,
-  deleteTransaction,
-  generateEcAddress,
-  generateFactoidAddress,
-  getHeight,
-  importAddresses,
-  importKoinify,
-  newTransaction,
-  properties,
-  signTransaction,
-  subFee,
-  tmpTransactions,
-  transactionsByRange,
-  transactionsByTxID,
-  transactionsByAddress,
-  transactionsAll,
-  walletBackup
-}
+  setTimeout: setTimeout,
+  setFactomNode: setFactomNode,
+  addEcOutput: addEcOutput,
+  addFee: addFee,
+  addInput: addInput,
+  addOutput: addOutput,
+  address: address,
+  allAddresses: allAddresses,
+  composeChain: composeChain,
+  composeEntry: composeEntry,
+  composeTransaction: composeTransaction,
+  deleteTransaction: deleteTransaction,
+  generateEcAddress: generateEcAddress,
+  generateFactoidAddress: generateFactoidAddress,
+  getHeight: getHeight,
+  importAddresses: importAddresses,
+  importKoinify: importKoinify,
+  newTransaction: newTransaction,
+  properties: properties,
+  signTransaction: signTransaction,
+  subFee: subFee,
+  tmpTransactions: tmpTransactions,
+  transactionsByRange: transactionsByRange,
+  transactionsByTxID: transactionsByTxID,
+  transactionsByAddress: transactionsByAddress,
+  transactionsAll: transactionsAll,
+  walletBackup: walletBackup
+};
